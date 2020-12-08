@@ -4,6 +4,12 @@ public class Item {
     private int id;
     private String name;
 
+    public void defConstr() {};
+
+    public void defConstr(int id) {this.id = id;};
+
+    public void defConstr(int id, String name) {this.id = id; this.name = name;};
+
     public int getId() {
         return id;
     }
