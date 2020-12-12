@@ -10,7 +10,8 @@ public class StartUI extends Item{
         //System.out.println(item.getDateCreated().format(formatter));
         Tracker tracker = new Tracker();
         tracker.add(item);
-        System.out.println("Название: " + tracker.findById(1).getName() + ", Номер: " + tracker.findById(1).getId());
+        //System.out.println("Название: " + tracker.findById(1).getName() + ", Номер: " + tracker.findById(1).getId());
+        System.out.println(item);
     }
 
 }
