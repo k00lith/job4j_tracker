@@ -3,8 +3,7 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class Tracker2 {
-    private static Tracker2 instance;
-
+    public static Tracker2 instance;
     private Tracker2() {}
 
     public static Tracker2 getInstance() {

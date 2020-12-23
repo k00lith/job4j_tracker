@@ -10,7 +10,7 @@ public class Tracker4 {
     }
 
     private static final class Holder {
-        private static final Tracker4 INSTANCE = new Tracker4();
+        public static final Tracker4 INSTANCE = new Tracker4();
     }
 
     private final Item[] items = new Item[100];

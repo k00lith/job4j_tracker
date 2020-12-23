@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public enum Tracker1 {
     INSTANCE;
+    private static final Tracker tracker = new Tracker();
+    public static Tracker getTracker() {
+        return tracker;
+    }
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
