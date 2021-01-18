@@ -1,15 +1,14 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private ArrayList<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
-        items[size++] = item;
+        items.add(item);
         return item;
     }
 
@@ -17,29 +16,33 @@ public class Tracker {
         /* Находим индекс */
         int index = indexOf(id);
         /* Если индекс найден возвращаем item, иначе null */
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    public ArrayList<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
-        Item[] namesSame = new Item[size];
-        int resize = 0;
-        for (int index = 0; index < size; index++) {
-            if (items[index].getName().equals(key)) {
-                namesSame[index] = items[index];
-                resize++;
+    /**
+     * Метод public Item[] findByName(String key)
+     * проверяет в цикле все элементы массива items, сравнивая name (используя метод getName класса Item)
+     * с аргументом метода String key. Элементы, у которых совпадает name, копирует в результирующий массив
+     * и возвращает его. Алгоритм этого метода аналогичен методу findAll.
+     */
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> namesSame = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                namesSame.add(item);
             }
         }
-        return Arrays.copyOf(namesSame, resize);
+        return namesSame;
     }
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
             }
@@ -52,7 +55,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             item.setId(id);
-            items[index] = item;
+            items.set(index, item);
         }
         return rsl;
     }
@@ -61,9 +64,7 @@ public class Tracker {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
-            System.arraycopy(items, (index + 1), items, index, (size - index));
-            items[size - 1] = null;
-            size--;
+            items.remove(index);
         }
         return rsl;
     }
