@@ -51,7 +51,8 @@ public class JobTest {
 
     @Test
     public void whenCompatorByNameAndProrityDesc() { // По убыванию имени, по убыванию приоритета
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        Comparator<Job> cmpNamePriority =
+                new JobDescByName().thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
@@ -59,9 +60,10 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
 
-    @Test
-    public void whenCompatorByNameAndProrityAscend() { // по возрастанию приоритета, по возрастанию имени
-        Comparator<Job> cmpNamePriority = new JobIncreaseByPriority().thenComparing(new JobIncreaseByName());
+    @Test // по возрастанию приоритета, по возрастанию имени
+    public void whenCompatorByNameAndProrityAscend() {
+        Comparator<Job> cmpNamePriority =
+                new JobIncreaseByPriority().thenComparing(new JobIncreaseByName());
         int rsl = cmpNamePriority.compare(
                 new Job("A", 0),
                 new Job("B", 1)
@@ -69,15 +71,14 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
 
-    @Test
-    public void whenCompatorByNameAndProrityEqual() { // по приоритету и имени
-        Comparator<Job> cmpNamePriority = new JobIncreaseByPriority().thenComparing(new JobIncreaseByName());
+    @Test // по приоритету и имени
+    public void whenCompatorByNameAndProrityEqual() {
+        Comparator<Job> cmpNamePriority =
+                new JobIncreaseByPriority().thenComparing(new JobIncreaseByName());
         int rsl = cmpNamePriority.compare(
                 new Job("Ticket", 262),
                 new Job("Ticket", 262)
         );
         assertThat(rsl, is(0));
     }
-
-
 }

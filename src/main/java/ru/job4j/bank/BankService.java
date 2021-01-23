@@ -45,7 +45,8 @@ public class BankService {
 
     /**
      * Метод для перечисления денег с одного счёта на другой счёт.
-     * Если счёт не найден или не хватает денег на счёте srcAccount (с которого переводят), то метод должен вернуть false.
+     * Если счёт не найден или не хватает денег на счёте srcAccount (с которого переводят),
+     * то метод должен вернуть false.
     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {

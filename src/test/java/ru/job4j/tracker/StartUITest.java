@@ -71,8 +71,8 @@ public class StartUITest {
         actions.add(new Exit());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Exit" + System.lineSeparator()
         ));
     }
 
@@ -89,18 +89,18 @@ public class StartUITest {
         actions.add(new Exit());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find All" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== All Items ====" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find All" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find All" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== All Items ====" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find All" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
     @Test
-    public void FindByNameAction() {
+    public void findByNameAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Item"));
@@ -112,19 +112,19 @@ public class StartUITest {
         actions.add(new Exit());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find by Name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== Find by Item's Name ====" + System.lineSeparator() +
-                        "Item" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find by Name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find by Name" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find by Item's Name ====" + System.lineSeparator()
+                        + "Item" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find by Name" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
     @Test
-    public void FindByIdAction() {
+    public void findByIdAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Item"));
@@ -136,14 +136,14 @@ public class StartUITest {
         actions.add(new Exit());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find by Id" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== Find by Item's Id ====" + System.lineSeparator() +
-                        "Заявка Item ID 1" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find by Id" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find by Id" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find by Item's Id ====" + System.lineSeparator()
+                        + "Заявка Item ID 1" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find by Id" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -151,7 +151,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] { "19", "0" }
+                new String[] {"19", "0"}
         );
         Tracker tracker = new Tracker();
         ArrayList<UserAction> actions = new ArrayList<>();
