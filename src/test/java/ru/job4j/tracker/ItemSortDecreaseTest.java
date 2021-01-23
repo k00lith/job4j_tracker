@@ -1,14 +1,14 @@
 package ru.job4j.tracker;
 
-import junit.framework.TestCase;
 import org.hamcrest.MatcherAssert;
-
+import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 
-public class ItemSortDecreaseTest extends TestCase {
+public class ItemSortDecreaseTest {
 
+    @Test
     public void testCompare() {
         Tracker tracker1 = new Tracker();
         Tracker tracker2 = new Tracker();
