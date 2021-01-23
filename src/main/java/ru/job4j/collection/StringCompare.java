@@ -10,17 +10,13 @@ public class StringCompare implements Comparator<String> {
             index = right.length();
         }
         for (int i = 0; i < index; i++) {
-            if (Character.compare(left.charAt(i), right.charAt(i)) > 0 ) {
-                return 1;
-            } else if (Character.compare(left.charAt(i), right.charAt(i)) < 0 ) {
-                return -1;
+            int rsl = Character.compare(left.charAt(i), right.charAt(i));
+            if (rsl > 0 ) {
+                return rsl;
+            } else if (rsl < 0 ) {
+                return rsl;
             }
         }
-        if (Integer.compare(left.length(), right.length()) > 0) {
-            return 1;
-        } else if (Integer.compare(left.length(), right.length()) < 0) {
-            return -1;
-        }
-        return 0;
+        return Integer.compare(left.length(), right.length());
     }
 }
