@@ -25,4 +25,31 @@ public class DepDescCompTest {
         assertThat(rsl, lessThan(0));
     }
 
+    @Test
+    public void whenUpDepartmentGoBeforeSingle() {
+        int rsl = new DepDescComp().compare(
+                "K2",
+                "K1"
+        );
+        assertThat(rsl, lessThan(0));
+    }
+
+    @Test
+    public void whenUpDepartmentGoBeforeMultiple() {
+        int rsl = new DepDescComp().compare(
+                "K2/SK1",
+                "K2/SK1/SSK1"
+        );
+        assertThat(rsl, lessThan(0));
+    }
+
+    @Test
+    public void whenUpDepartmentGoBeforeMultipleTreeByTwo() {
+        int rsl = new DepDescComp().compare(
+                "K1/SK1/SSK2",
+                "K1/SK2"
+        );
+        assertThat(rsl, lessThan(0));
+    }
+
 }

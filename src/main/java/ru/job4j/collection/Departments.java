@@ -24,10 +24,11 @@ public class Departments {
     }
 
     public static void sortAsc(List<String> orgs) {
-        orgs.sort();
-
+        Collections.sort(orgs);
     }
 
     public static void sortDesc(List<String> orgs) {
+        Collections.sort(orgs, new DepDescComp());
+
     }
 }
