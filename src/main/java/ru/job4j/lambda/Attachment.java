@@ -16,4 +16,12 @@ public class Attachment {
     public int getSize() {
         return size;
     }
+
+    @Override
+    public String toString() {
+        return "Attachment{" +
+                "name='" + name + '\'' +
+                ", size=" + size +
+                '}';
+    }
 }
