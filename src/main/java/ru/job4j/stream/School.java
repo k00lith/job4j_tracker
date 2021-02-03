@@ -13,8 +13,8 @@ public class School {
     public Map<String, Student> ListToMap(List<Student> students) {
         return students
                 .stream()
-                .distinct()
+                //.distinct()
                 .collect(Collectors.
-                        toMap(k -> k.getSurname(), v -> v));
+                        toMap(k -> k.getSurname(), v -> v, (s1, s2) -> s1));
     }
 }
