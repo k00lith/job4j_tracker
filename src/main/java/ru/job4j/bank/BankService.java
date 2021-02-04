@@ -37,7 +37,7 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         Optional<User> user = findByPassport(passport);
         if (user.isPresent()) {
-            List<Account> lst = users.get(user);
+            List<Account> lst = users.get(user.get());
             if (!lst.contains(account)) {
                 lst.add(account);
             }
@@ -51,13 +51,13 @@ public class BankService {
      * метод возвращает null
      */
     public Optional<User> findByPassport(String passport) {
-        Optional<User> rsl = Optional.empty();
-        rsl = Optional.of(users.keySet()
+        Optional<User> rsl;
+        rsl = users.keySet()
                 .stream()
                 .filter(u -> passport.equals(u.getPassport()))
-                .findFirst()
-                .orElse(null));
+                .findFirst();
         return rsl;
+        //return rsl;
     }
 
     /**
@@ -68,13 +68,17 @@ public class BankService {
      * метод возвращает null
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
-        List<Account> lst = users.get(findByPassport(passport));
+        List<Account> lst;
+        if (findByPassport(passport).isPresent()) {
+            lst = users.get(findByPassport(passport).get());
+        } else {
+            return null;
+        }
         Optional<Account> rsl = Optional.empty();
         if (lst != null) {
-             rsl = Optional.of(lst.stream()
+             rsl = lst.stream()
                     .filter(u -> requisite.equals(u.getRequisite()))
-                    .findFirst()
-                    .orElse(null));
+                    .findFirst();
         }
         return rsl;
     }
