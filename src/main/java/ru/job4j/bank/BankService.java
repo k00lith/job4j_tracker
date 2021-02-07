@@ -69,7 +69,7 @@ public class BankService {
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
         List<Account> lst;
-        Optional<Account> rsl = Optional.empty();
+        Optional<Account> rsl = null;
         if (findByPassport(passport).isPresent()) {
             lst = users.get(findByPassport(passport).get());
             if (lst != null) {
@@ -77,8 +77,6 @@ public class BankService {
                         .filter(u -> requisite.equals(u.getRequisite()))
                         .findFirst();
             }
-        } else {
-            return null;
         }
         return rsl;
     }
